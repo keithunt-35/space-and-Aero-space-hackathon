@@ -69,11 +69,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       </div>
     </nav>
     <div className="bg-sky-pattern">
-      <img src="/images/clouds.svg" className="absolute w-32 h-32 animate-float-clouds opacity-20" style={{ top: '15%', left: '10%' }} />
-      <img src="/images/clouds.svg" className="absolute w-24 h-24 animate-float-clouds opacity-20" style={{ top: '35%', right: '15%', animationDelay: '1s' }} />
-      <img src="/images/clouds.svg" className="absolute w-28 h-28 animate-float-clouds opacity-20" style={{ top: '55%', left: '30%', animationDelay: '2s' }} />
-      <img src="/images/airplane1.svg" className="absolute w-40 h-40 animate-float-plane1 opacity-30" style={{ top: '25%', left: '20%' }} />
-      <img src="/images/airplane2.svg" className="absolute w-36 h-36 animate-float-plane2 opacity-30" style={{ top: '45%', right: '25%', animationDelay: '1.5s' }} />
+      <img src="./images/clouds.svg" className="absolute w-32 h-32 animate-float-clouds opacity-20" style={{ top: '15%', left: '10%' }} />
+      <img src="./images/clouds.svg" className="absolute w-24 h-24 animate-float-clouds opacity-20" style={{ top: '35%', right: '15%', animationDelay: '1s' }} />
+      <img src="./images/clouds.svg" className="absolute w-28 h-28 animate-float-clouds opacity-20" style={{ top: '55%', left: '30%', animationDelay: '2s' }} />
+      <img src="./images/airplane1.svg" className="absolute w-40 h-40 animate-float-plane1 opacity-30" style={{ top: '25%', left: '20%' }} />
+      <img src="./images/airplane2.svg" className="absolute w-36 h-36 animate-float-plane2 opacity-30" style={{ top: '45%', right: '25%', animationDelay: '1.5s' }} />
     </div>
     <main className="container mx-auto p-4 relative z-10">
       {children}
