@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #FFFFFF;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #1A1B1E;
+  @apply bg-dark text-gray-100;
+}
+
+/* Background Patterns */
+.bg-sky-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 25%);
+}
+
+/* Button Styles */
+button {
+  @apply transition-all duration-200;
+}
+
+button:not(.text-white):not(.text-gray-400):not(.text-red-400):not(.text-green-400) {
+  color: #eab308; /* yellow-500 */
+}
+
+button:not(.text-white):not(.text-gray-400):not(.text-red-400):not(.text-green-400):hover {
+  color: #ca8a04; /* yellow-600 */
+}
+
+button.bg-primary {
+  @apply bg-gradient-to-r from-primary to-yellow-500 hover:from-primary-dark hover:to-yellow-600;
+}
+
+button.bg-secondary {
+  @apply bg-gradient-to-r from-accent to-yellow-500 hover:from-accent-dark hover:to-yellow-600;
+}
+
+/* Animation Classes */
+@keyframes float-clouds {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-plane1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -10px); }
+}
+
+@keyframes float-plane2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 10px); }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toggle Switch */
+.toggle-checkbox:checked {
+  @apply right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  @apply bg-green-400;
+  background-color: #68D391;
+}
+
+.toggle-checkbox {
+  @apply absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer;
+  right: 0;
+}
+
+.toggle-label {
+  @apply block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer;
+}
+
+/* Theme Colors */
+.bg-white {
+  @apply bg-dark-card text-gray-100;
+}
+
+.text-gray-600 {
+  @apply text-gray-400;
+}
+
+.text-gray-500 {
+  color: #6b7280; /* gray-500 color value */
+}
+
+.text-gray-700 {
+  @apply text-gray-300;
+}
+
+.border {
+  @apply border-dark-border;
+}
+
+.bg-gray-50 {
+  @apply bg-dark-lighter;
+}
+
+.bg-gray-100 {
+  @apply bg-dark-lighter;
+}
+
+.bg-gray-200 {
+  @apply bg-dark-border;
+}
+
+/* Form Elements */
+input, select {
+  @apply bg-dark-card border-dark-border text-gray-100;
+}
+
+input::placeholder {
+  @apply text-gray-500;
+}
+
+/* Status Colors */
+.bg-green-50 {
+  @apply bg-green-900 bg-opacity-20;
+}
+
+.text-green-500 {
+  @apply text-green-400;
+}
+
+.bg-green-500 {
+  @apply bg-green-600;
+}
+
+.hover\:bg-green-600:hover {
+  @apply bg-green-700;
+}
+
+/* Warning Colors */
+.bg-yellow-500 {
+  @apply bg-yellow-600;
+}
+
+.hover\:bg-yellow-600:hover {
+  @apply bg-yellow-700;
+}
+
+/* Error Colors */
+.text-red-500 {
+  @apply text-red-400;
+}
+
+.hover\:text-red-600:hover {
+  @apply text-red-500;
+}
+
+.bg-red-500 {
+  @apply bg-red-600;
+}
+
+.hover\:bg-red-600:hover {
+  @apply bg-red-700;
+} 
