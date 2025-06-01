@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { store } from './store';
 import type { RootState } from './store';
 import { setFlightDuration, setFlightPhase, selectFlightRoute, resetFlight } from './store/slices/flightSlice';
@@ -17,9 +17,6 @@ import {
   removeBookmark,
   addNote,
   removeNote,
-  addGoal,
-  updateGoalProgress,
-  removeGoal,
 } from './store/slices/readingSlice';
 import ReadingReminder from './components/ReadingReminder';
 import FileUpload from './components/FileUpload';
@@ -33,6 +30,10 @@ import { addTimeBlock, updateTimeBlock, removeTimeBlock, TimeBlock } from './sto
 import { startPomodoroSession, pauseSession, completePomodoroSession } from './store/slices/productivitySlice';
 import { recordDistraction } from './store/slices/productivitySlice';
 import { NetflixLogo, AppleTVLogo, YouTubeLogo, LocalContentLogo } from './assets/logos';
+import {
+  addGoal,
+  removeGoal,
+} from './store/slices/productivitySlice';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="min-h-screen bg-dark">
@@ -858,6 +859,18 @@ const Reading = () => {
     });
   };
 
+  const handleAddGoal = () => {
+    const newGoal = {
+      title: 'Read More Pages',
+      type: 'pages' as const,
+      targetValue: 100,
+      unit: 'pages',
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
+    };
+    dispatch(addGoal(newGoal));
+    setNewGoal({ type: 'pages', target: 0, deadline: new Date() });
+  };
+
   return (
     <div className="space-y-6">
       {/* Library Header */}
@@ -1146,16 +1159,7 @@ const Reading = () => {
                 className="w-full px-3 py-2 border rounded-lg"
               />
               <button
-                onClick={() => {
-                  if (newGoal.target > 0) {
-                    dispatch(addGoal(newGoal));
-                    setNewGoal({
-                      type: 'pages',
-                      target: 0,
-                      deadline: new Date(),
-                    });
-                  }
-                }}
+                onClick={handleAddGoal}
                 className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-dark"
               >
                 Add Goal

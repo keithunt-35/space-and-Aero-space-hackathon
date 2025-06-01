@@ -30,11 +30,12 @@ interface FocusSession {
 interface ProductivityGoal {
   id: string;
   title: string;
+  type: 'pages' | 'books' | 'time';
   targetValue: number;
   currentValue: number;
-  unit: 'minutes' | 'sessions' | 'pages' | 'tasks';
   deadline: Date;
   completed: boolean;
+  unit: string;
 }
 
 interface ProductivityState {
@@ -156,14 +157,14 @@ const productivitySlice = createSlice({
     },
     
     // Goal Actions
-    addGoal: (state, action: PayloadAction<Omit<ProductivityGoal, 'id' | 'currentValue' | 'completed'>>) => {
-      const id = Date.now().toString();
-      state.goals.push({
+    addGoal: (state, action: PayloadAction<Omit<ProductivityGoal, 'id' | 'completed' | 'currentValue'>>) => {
+      const newGoal: ProductivityGoal = {
         ...action.payload,
-        id,
-        currentValue: 0,
+        id: Math.random().toString(36).substr(2, 9),
         completed: false,
-      });
+        currentValue: 0,
+      };
+      state.goals.push(newGoal);
     },
     updateGoalProgress: (state, action: PayloadAction<{ id: string; value: number }>) => {
       const goal = state.goals.find(g => g.id === action.payload.id);
@@ -184,7 +185,9 @@ const productivitySlice = createSlice({
       state.isActive = true;
     },
     resetProductivity: (state) => {
-      return initialState;
+      state.goals = [];
+      state.focusSessions = [];
+      state.timeBlocks = [];
     },
   },
 });

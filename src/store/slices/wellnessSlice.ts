@@ -44,7 +44,11 @@ const wellnessSlice = createSlice({
       }
     },
     resetWellnessMetrics: (state) => {
-      return initialState;
+      state.waterIntake = 0;
+      state.movementStreak = 0;
+      state.screenTime = 0;
+      state.lastBreak = null;
+      state.exercisesCompleted = [];
     },
   },
 });
