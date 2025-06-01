@@ -252,6 +252,9 @@ The Flight Wellness Companion is an in-flight productivity and wellness applicat
 
 ---
 
+
+local host works, deployment has issues
+
 **Document Prepared By**: Development Team  
 **Review Date**: As needed based on development progress  
 **Approval Required**: Ugandan Airlines Technical and Operations Teams
